@@ -1,3 +1,4 @@
+// ProductsPage.tsx
 import React, { useContext } from "react";
 import { MainContext } from "../context/MainContext";
 import { ProductsContext } from "../context/ProductsContext";
@@ -11,7 +12,7 @@ const ProductsPage: React.FC = () => {
     <div className="p-8 grid grid-cols-4 gap-8 min-h-[calc(100vh-136px)]">
       {products.map((product: any, id: number) => (
         <div key={id}>
-          <Products product={product} id={id} />
+          <Products product={product} id={id + 1} />
         </div>
       ))}
     </div>

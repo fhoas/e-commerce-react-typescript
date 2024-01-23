@@ -1,14 +1,17 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+// ProductsContext.tsx
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 import axios from "axios";
 
-interface types {
+interface ProductsContextTypes {
   products: any;
   setProducts: React.Dispatch<React.SetStateAction<any[]>>;
   index: number;
   setIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const ProductsContext = createContext<types | undefined>(undefined);
+export const ProductsContext = createContext<ProductsContextTypes | undefined>(
+  undefined
+);
 
 export const ProductsContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -22,7 +25,7 @@ export const ProductsContextProvider: React.FC<{ children: ReactNode }> = ({
     });
   }, []);
 
-  const contextValue: types = {
+  const contextValue: ProductsContextTypes = {
     products,
     setProducts,
     index,

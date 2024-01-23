@@ -4,7 +4,7 @@ import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
   return (
-    <div className="flex w-full justify-between bg-primaryWhite text-primaryBlack items-center p-4 font-primary">
+    <div className="flex w-full justify-between bg-primary text-primary items-center px-16 py-4 font-primary">
       <div className="text-heading">
         <Link to={"/"}>Favicon</Link>
       </div>

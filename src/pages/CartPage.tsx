@@ -1,10 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+// CartPage.tsx
+import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { ProductsContext } from "../context/ProductsContext";
 
 const CartPage: React.FC = () => {
   const { products } = useContext(ProductsContext) || {};
-  const { cartItems } = useContext(CartContext) || {};
+  const { cartItems, setCartItems } = useContext(CartContext) || {};
   const [cartProducts, setCartProducts] = useState<any[]>([]);
 
   useEffect(() => {
@@ -63,15 +64,17 @@ const CartPage: React.FC = () => {
     setCartProducts(updatedCartProducts);
   };
 
+  console.log(cartProducts);
+
   return (
-    <div className="p-8 min-h-[calc(100vh-136px)]">
+    <div className="p-8 min-h-[calc(100vh-123px)]">
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
       {cartProducts.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
         <>
-          <ul className="divide-y divide-gray-300">
+          <ul className="divide-y divide-gray-300 bg-primary p-4 rounded">
             {cartProducts.map((product: any) => (
               <li
                 key={product.id}
@@ -84,27 +87,29 @@ const CartPage: React.FC = () => {
                     className="w-16 h-16 object-cover rounded"
                   />
                   <div>
-                    <p className="font-semibold">{product.title}</p>
-                    <p className="text-gray-500">${product.price}</p>
+                    <p className=" text-primary">{product.title}</p>
+                    <p className="font-semibold text-primary">
+                      ${product.price}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <button
                     onClick={() => decreaseQuantity(product.id)}
-                    className="text-gray-500"
+                    className="text-black"
                   >
                     -
                   </button>
-                  <span>{product.quantity || 1}</span>
+                  <span className="text-primary">{product.quantity || 1}</span>
                   <button
                     onClick={() => increaseQuantity(product.id)}
-                    className="text-gray-500"
+                    className="text-black"
                   >
                     +
                   </button>
                   <button
                     onClick={() => removeItem(product.id)}
-                    className="text-red-500"
+                    className="text-red-500 bg-secondary p-4 rounded"
                   >
                     Remove
                   </button>
@@ -117,7 +122,7 @@ const CartPage: React.FC = () => {
             <p className="text-xl font-semibold">
               Subtotal: ${Math.trunc(calculateTotal())}
             </p>
-            <button className="bg-primaryWhite text-primaryBlack px-4 py-2 rounded mt-4">
+            <button className="bg-primary text-primary px-4 py-2 rounded mt-4">
               Proceed to Checkout
             </button>
           </div>

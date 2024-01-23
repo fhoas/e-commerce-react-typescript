@@ -7,7 +7,7 @@ const HeroLeft = () => {
         High Quality Product For You.
       </span>
       <p>Quality products imported from Japan, Europe and USA for you.</p>
-      <button className="bg-primaryWhite text-primaryBlack p-4 rounded w-fit">
+      <button className="bg-primary text-primary p-4 rounded w-fit">
         <Link to={"/products"}>Shop Now</Link>
       </button>
     </div>

@@ -9,17 +9,17 @@ export default {
         large: "20px",
         heading: "24px",
       },
-      colors: {
-        primaryWhite: "#FEFBF6",
-        primaryBlack: "#323232",
-      },
       fontFamily: {
         primary: "General Sans, sans-serif",
         secondary: "Cabinet Grotesk, sans-serif",
       },
+      colors: {
+        primary: "#d4a373",
+        secondary: "#d5bdaf",
+      },
       backgroundColor: {
-        primaryWhite: "#FEFBF6",
-        primaryBlack: "#323232",
+        primary: "#edede9",
+        secondary: "#d6ccc2",
       },
     },
   },

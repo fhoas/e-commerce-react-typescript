@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer className="bg-primaryWhite text-primaryBlack p-4 text-center bottom-0">
+    <footer className="bg-primary text-primary p-4 text-center bottom-0">
       {kanyeQuote !== null ? <p>{kanyeQuote}</p> : <p>Loading...</p>}
     </footer>
   );

@@ -1,23 +1,26 @@
+// MainContext.tsx
 import React, { createContext, ReactNode, useState } from "react";
 
-type types = {
-  test: string,
+interface MainContextTypes {
+  test: string;
   setTest: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
-const initialValue: types = {
-  test: "salam",
+const initialValue: MainContextTypes = {
+  test: "",
   setTest: () => {},
 };
 
-export const MainContext = createContext<types | undefined>(undefined);
+export const MainContext = createContext<MainContextTypes | undefined>(
+  undefined
+);
 
 export const MainContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [test, setTest] = useState<string>(initialValue.test);
 
-  const contextValue: types = {
+  const contextValue: MainContextTypes = {
     test,
     setTest,
   };
