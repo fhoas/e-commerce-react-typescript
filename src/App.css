@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: #d4a373;
-    color: white;
-    min-height: 100vh;
+body {
+    background-color: #282828;
+    color           : white;
+    min-height      : 100vh;
+    user-select     : none;
 }

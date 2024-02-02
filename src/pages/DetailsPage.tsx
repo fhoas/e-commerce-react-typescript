@@ -14,15 +14,14 @@ const DetailsPage: React.FC<ProductsProps> = () => {
   const { cartItems, setCartItems } = useContext(CartContext) || {};
 
   const addCart = () => {
-    if (setCartItems) {
+    if (setCartItems && index !== undefined) {
       const newCartItems = cartItems ? [...cartItems] : [];
 
-      const numericId = Number(id);
+      const numericId = Number(products[index].id);
 
       if (!isNaN(numericId) && !newCartItems.includes(numericId)) {
         newCartItems.push(numericId);
         setCartItems(newCartItems);
-        console.log(newCartItems);
       }
     }
   };
@@ -30,18 +29,22 @@ const DetailsPage: React.FC<ProductsProps> = () => {
   return (
     <div className="container mx-auto p-8 min-h-[calc(100vh-136px)]">
       {index !== undefined && (
-        <div className="flex">
+        <div className="flex flex-col justify-center items-start gap-4 md:items-start md:flex-row">
           <img
-            className="w-1/2 h-auto rounded"
+            className="w-[200px] h-[200px] md:h-[400px] md:w-1/2 rounded"
             src={products[index].image}
             alt="#"
           />
-          <div className="ml-8">
-            <h1 className="text-3xl font-bold mb-4">{products[index].title}</h1>
-            <p className="text-[#edede9]">{products[index].description}</p>
-            <p className="text-2xl font-bold mt-4">${products[index].price}</p>
+          <div className="md:ml-8">
+            <h1 className="text-3xl font-bold mb-4 text-white">
+              {products[index].title}
+            </h1>
+            <p className="text-white">{products[index].description}</p>
+            <p className="text-white text-2xl font-bold mt-4">
+              ${Math.trunc((products[index].price / 100) * 70)}
+            </p>
             <button
-              className="bg-primary text-primary px-4 py-2 mt-4 rounded hover:bg-primary"
+              className="bg-deepPurple1 text-primary px-4 py-2 mt-4 rounded hover:bg-primary"
               onClick={addCart}
             >
               Add to Cart

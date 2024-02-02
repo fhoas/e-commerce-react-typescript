@@ -12,8 +12,9 @@ const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer className="bg-primary text-primary p-4 text-center bottom-0">
-      {kanyeQuote !== null ? <p>{kanyeQuote}</p> : <p>Loading...</p>}
+    <footer className="flex justify-between px-8 py-4 bg-primary text-primary text-center bottom-0">
+      <div>All rights reserved © 2024</div>
+      <div>{kanyeQuote !== null ? <p>{kanyeQuote}</p> : <p>Loading...</p>}</div>
     </footer>
   );
 };

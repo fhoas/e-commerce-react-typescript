@@ -7,6 +7,9 @@ interface ProductsContextTypes {
   setProducts: React.Dispatch<React.SetStateAction<any[]>>;
   index: number;
   setIndex: React.Dispatch<React.SetStateAction<number>>;
+  activeCategory: string;
+  setActiveCategory: React.Dispatch<React.SetStateAction<string>>;
+  filteredProducts: any[];
 }
 
 export const ProductsContext = createContext<ProductsContextTypes | undefined>(
@@ -17,7 +20,9 @@ export const ProductsContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [products, setProducts] = useState<any[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [index, setIndex] = useState<number>(0);
+  const [activeCategory, setActiveCategory] = useState<string>("all");
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((response) => {
@@ -25,11 +30,25 @@ export const ProductsContextProvider: React.FC<{ children: ReactNode }> = ({
     });
   }, []);
 
+  useEffect(() => {
+    if (activeCategory === "all") {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter(
+        (product) => product.category === activeCategory
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [activeCategory, products]);
+
   const contextValue: ProductsContextTypes = {
     products,
     setProducts,
     index,
     setIndex,
+    activeCategory,
+    setActiveCategory,
+    filteredProducts,
   };
 
   return (

@@ -2,7 +2,7 @@
 
 const ErrorPage = () => {
   return (
-    <div className="error__wrapper bg-black text-white flex items-center justify-center flex-col p-8 min-h-[calc(100vh-136px)]">
+    <div className="error__wrapper text-white flex items-center justify-center flex-col p-8 min-h-[calc(100vh-136px)]">
       <div className="flex justify-center items-center">
         <h1 className="text-5xl">4</h1>
         <img
