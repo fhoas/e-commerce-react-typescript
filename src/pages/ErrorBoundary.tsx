@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -45,7 +45,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       return (
         <div className="flex justify-center items-center p-8 text-center">
           <p className="text-red-500 mt-4">
-            These dimensions are not supported.
+            not supported.
           </p>
         </div>
       );

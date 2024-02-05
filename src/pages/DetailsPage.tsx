@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useParams } from "react-router-dom";
 import { ProductsContext } from "../context/ProductsContext";
 import { CartContext } from "../context/CartContext";
 
@@ -9,7 +8,6 @@ interface ProductsProps {
 }
 
 const DetailsPage: React.FC<ProductsProps> = () => {
-  const { id } = useParams();
   const { index, products } = useContext(ProductsContext) || {};
   const { cartItems, setCartItems } = useContext(CartContext) || {};
 
@@ -31,7 +29,7 @@ const DetailsPage: React.FC<ProductsProps> = () => {
       {index !== undefined && (
         <div className="flex flex-col justify-center items-start gap-4 md:items-start md:flex-row">
           <img
-            className="w-[200px] h-[200px] md:h-[400px] md:w-1/2 rounded"
+            className="w-[200px] h-[200px] md:h-[300px] md:w-[300px] rounded"
             src={products[index].image}
             alt="#"
           />
@@ -40,9 +38,14 @@ const DetailsPage: React.FC<ProductsProps> = () => {
               {products[index].title}
             </h1>
             <p className="text-deepWhite">{products[index].description}</p>
-            <p className="text-white text-2xl font-bold mt-4">
-              ${Math.trunc((products[index].price / 100) * 70)}
-            </p>
+            <div className="flex items-center mt-4 gap-2">
+              <span className="line-through text-deepWhite">
+                {products[index].price}$
+              </span>
+              <p className="text-2xl font-bold">
+                ${Math.trunc((products[index].price / 100) * 70)}
+              </p>
+            </div>
             <button
               className="bg-deepPurple1 text-primary px-4 py-2 mt-4 rounded hover:bg-primary"
               onClick={addCart}

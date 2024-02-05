@@ -7,7 +7,7 @@ import { ProductsContext } from "../../context/ProductsContext";
 const SideMenu = () => {
   const { sideStatus } = useContext(MainContext) || {};
   const [dropDownStatus, setDropDownStatus] = useState<boolean>(false);
-  const { activeCategory, setActiveCategory } =
+  const { setActiveCategory } =
     useContext(ProductsContext) || {};
 
   const handleDropDown = () => {

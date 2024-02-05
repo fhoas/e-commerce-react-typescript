@@ -45,7 +45,7 @@ const Products: React.FC<ProductsProps> = ({ product, id }) => {
       <span className="absolute left-0 top-0">
         <img
           className=" h-[85px] w-[85px]"
-          src="./assets/discount.webp"
+          src="./assets/discount.png"
           alt=""
         />
       </span>
@@ -60,7 +60,7 @@ const Products: React.FC<ProductsProps> = ({ product, id }) => {
             alt="#"
           />
         </div>
-        <div className="flex items-center justify-center text-center h-[50px] leading-4 text-deepPurple3">
+        <div className="flex items-center justify-center text-center h-[50px] leading-6 text-black">
           {truncatedTitle}
         </div>
       </div>

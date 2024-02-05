@@ -6,24 +6,24 @@ const CartPage: React.FC = () => {
   const { products } = useContext(ProductsContext) || {};
   const { cartItems, setCartItems } = useContext(CartContext) || {};
   const [cartProducts, setCartProducts] = useState<any[]>([]);
-  const [isUnsupportedDimensions, setIsUnsupportedDimensions] =
-    useState<boolean>(false);
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  // const [isUnsupportedDimensions, setIsUnsupportedDimensions] =
+  //   useState<boolean>(false);
+  const [windowWidth] = useState<number>(window.innerWidth);
 
-  useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-      setIsUnsupportedDimensions(window.innerWidth < 300);
-    }
+  // useEffect(() => {
+  //   function handleResize() {
+  //     setWindowWidth(window.innerWidth);
+  //     setIsUnsupportedDimensions(window.innerWidth < 300);
+  //   }
 
-    handleResize();
+  //   handleResize();
 
-    window.addEventListener("resize", handleResize);
+  //   window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [cartItems]);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, [cartItems]);
 
   useEffect(() => {
     setCartProducts((prevCartProducts) =>
@@ -86,13 +86,13 @@ const CartPage: React.FC = () => {
     }
   };
 
-  if (isUnsupportedDimensions) {
-    return (
-      <div className="flex justify-center items-center p-8 text-center">
-        <p className="text-red-500 mt-4">These dimensions are not supported.</p>
-      </div>
-    );
-  }
+  // if (isUnsupportedDimensions) {
+  //   return (
+  //     <div className="flex justify-center items-center p-8 text-center">
+  //       <p className="text-red-500 mt-4">These dimensions are not supported.</p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="p-4 md:px-16 md:py-8 min-h-[calc(100vh-152px)]">
