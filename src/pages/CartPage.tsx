@@ -95,11 +95,11 @@ const CartPage: React.FC = () => {
   }
 
   return (
-    <div className="p-4 md:px-16 md:py-8 min-h-[calc(100vh-123px)]">
+    <div className="p-4 md:px-16 md:py-8 min-h-[calc(100vh-152px)]">
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
       {cartProducts.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="text-deepWhite">Your cart is empty.</p>
       ) : (
         <>
           <ul className="flex flex-col bg-[#202020] bg-primary p-4 md:p-8 rounded gap-2">

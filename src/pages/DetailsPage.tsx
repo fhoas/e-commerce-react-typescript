@@ -39,7 +39,7 @@ const DetailsPage: React.FC<ProductsProps> = () => {
             <h1 className="text-3xl font-bold mb-4 text-white">
               {products[index].title}
             </h1>
-            <p className="text-white">{products[index].description}</p>
+            <p className="text-deepWhite">{products[index].description}</p>
             <p className="text-white text-2xl font-bold mt-4">
               ${Math.trunc((products[index].price / 100) * 70)}
             </p>

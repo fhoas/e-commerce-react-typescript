@@ -22,8 +22,8 @@ const Navbar = () => {
       <div className="text-heading flex gap-4">
         <Link to={"/"}>
           <img
-            className="w-[75px] h-[75px]"
-            src="/assets/logo.gif"
+            className="w-[60px] h-[60px]"
+            src="/assets/logo-wired.gif"
             alt="logo"
           />
         </Link>

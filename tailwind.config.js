@@ -19,6 +19,7 @@ export default {
         deepPurple1: "#3500d3",
         deepPurple0: "#4200FE",
         deepBlack: "#282828",
+        deepWhite: "#9BA3AF"
       },
       backgroundColor: {
         deepPurple3: "#190061",
@@ -26,6 +27,7 @@ export default {
         deepPurple1: "#3500d3",
         deepPurple0: "#4200FE",
         deepBlack: "#282828",
+        deepWhite: "#9BA3AF",
       },
     },
   },

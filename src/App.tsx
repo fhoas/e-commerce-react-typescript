@@ -12,6 +12,7 @@ import { ProductsContextProvider } from "./context/ProductsContext";
 import { CartContextProvider } from "./context/CartContext";
 import SideMenu from "./components/sideMenu/SideMenu";
 import ErrorBoundary from "./pages/ErrorBoundary";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
+              <Footer />
             </ErrorBoundary>
           </Router>
         </CartContextProvider>

@@ -7,7 +7,7 @@ interface NavLinkProps {
   children: React.ReactNode;
 }
 
- const NavLink: React.FC<NavLinkProps> = ({ to, currentPath, children }) => {
+const NavLink: React.FC<NavLinkProps> = ({ to, currentPath, children }) => {
   const isActive = currentPath === to;
 
   const linkStyles = `text-large font-light ${
