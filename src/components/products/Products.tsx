@@ -20,6 +20,7 @@ const Products: React.FC<ProductsProps> = ({ product, id }) => {
       navigate(`details/${index}`);
     }
   };
+
   const addCart = () => {
     if (setCartItems) {
       const newCartItems = cartItems ? [...cartItems] : [];
@@ -51,7 +52,7 @@ const Products: React.FC<ProductsProps> = ({ product, id }) => {
       </span>
       <div
         onClick={handleClick}
-        className="flex justify-center items-center flex-col gap-2"
+        className="flex justify-center items-center flex-col gap-2 p-4"
       >
         <div>
           <img
