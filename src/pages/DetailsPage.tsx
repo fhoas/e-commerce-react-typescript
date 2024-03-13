@@ -47,7 +47,7 @@ const DetailsPage: React.FC<ProductsProps> = () => {
               </p>
             </div>
             <button
-              className="bg-deepPurple1 text-primary px-4 py-2 mt-4 rounded hover:bg-primary"
+              className="bg-gray9 border-gray6 hover:bg-gray8 hover:border-gray5 border-[1px] text-primary px-4 py-2 mt-4 rounded hover:bg-primary"
               onClick={addCart}
             >
               Add to Cart

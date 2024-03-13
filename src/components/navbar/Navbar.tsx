@@ -32,7 +32,7 @@ const Navbar = () => {
       <div>
         <Link to={"/cart"} className="relative hidden lg:flex md:flex sm:flex">
           <FaCartShopping size={24} />
-          <span className="absolute top-[-20px] right-[-15px] bg-deepPurple0 text-white rounded-full h-[20px] w-[20px] flex justify-center items-center">
+          <span className="absolute top-[-20px] right-[-15px] bg-gray6 text-white rounded-full h-[20px] w-[20px] flex justify-center items-center">
             {counter}
           </span>
         </Link>

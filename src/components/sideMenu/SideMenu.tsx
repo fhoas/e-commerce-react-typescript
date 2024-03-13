@@ -21,7 +21,7 @@ const SideMenu = () => {
   return (
     <div>
       {sideStatus ? (
-        <aside className="fixed bg-deepPurple1 text-white flex flex-col gap-16 px-8 py-16 w-[60%] h-full top-0 text-lg duration-500 transform translate-x-0 md:translate-x-full lg:translate-x-full z-50 sm:translate-x-full md:hidden lg:hidden sm:hidden">
+        <aside className="fixed bg-gray9 text-white flex flex-col gap-16 px-8 py-16 w-[60%] h-full top-0 text-lg duration-500 transform translate-x-0 md:translate-x-full lg:translate-x-full z-50 sm:translate-x-full md:hidden lg:hidden sm:hidden">
           <Link
             className="sidebar-link duration-500 hover:tracking-widest"
             to={"/"}

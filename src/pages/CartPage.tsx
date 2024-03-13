@@ -151,7 +151,7 @@ const CartPage: React.FC = () => {
                       </div>
                       <button
                         onClick={() => removeItem(product.id)}
-                        className="bg-deepPurple1 hover:bg-deepPurple2 text-white bg-secondary p-2 rounded text-[10px] sm:text-small md:text-medium "
+                        className="bg-gray9 border-gray5 hover:bg-gray8 hover:border-gray5 text-white border-[1px] p-2 rounded text-[10px] sm:text-small md:text-medium "
                       >
                         Remove
                       </button>
@@ -169,7 +169,7 @@ const CartPage: React.FC = () => {
             <p className="text-xl font-semibold">
               Subtotal: ${Math.trunc(calculateTotal())}
             </p>
-            <button className="bg-deepPurple1 hover:bg-deepPurple2 text-primary px-4 py-2 rounded mt-4">
+            <button className="bg-gray9 border-gray5 hover:bg-gray8 hover:border-gray5 text-white border-[1px] text-primary px-4 py-2 rounded mt-4">
               <a href="https://www.fhoas.dev/">Proceed to Checkout</a>
             </button>
           </div>

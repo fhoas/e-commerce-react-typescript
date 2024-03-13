@@ -46,7 +46,7 @@ const Products: React.FC<ProductsProps> = ({ product, id }) => {
       <span className="absolute left-0 top-0">
         <img
           className=" h-[85px] w-[85px]"
-          src="./assets/discount.png"
+          src="https://png.pngtree.com/png-vector/20220527/ourmid/pngtree-30-percent-off-sale-discount-png-image_4747444.png"
           alt=""
         />
       </span>
@@ -75,7 +75,7 @@ const Products: React.FC<ProductsProps> = ({ product, id }) => {
 
         <button
           onClick={addCart}
-          className="bg-deepPurple1 hover:bg-deepPurple2 py-2 px-8 rounded text-primary bg-primary mt-4 w-1/2 flex justify-center items-center gap-2"
+          className="bg-gray9 border-gray5 hover:bg-gray8 hover:border-gray5 py-2 px-8 rounded text-primary bg-primary mt-4 w-full flex justify-center items-center gap-2"
         >
           <span className="line-through text-deepWhite">{product.price}$</span>
           <span className="text-white text-lg">{discountCost}$</span>

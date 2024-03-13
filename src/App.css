@@ -7,4 +7,5 @@ body {
     color           : white;
     min-height      : 100vh;
     user-select     : none;
+    font-family     : "Cabinet Grotesk", sans-serif;
 }

@@ -10,18 +10,25 @@ export default {
         heading: "24px",
       },
       fontFamily: {
-        primary: "General Sans, sans-serif",
-        secondary: "Cabinet Grotesk, sans-serif",
+        primary: "Cabinet Grotesk, sans-serif"
       },
       colors: {
+        gray9: "#1f1f1f",
+        gray8: "#252525",
+        gray6: "#666",
+        gray5: "#999",
         deepPurple3: "#190061",
         deepPurple2: "#240090",
         deepPurple1: "#3500d3",
         deepPurple0: "#4200FE",
         deepBlack: "#282828",
-        deepWhite: "#9BA3AF"
+        deepWhite: "#9BA3AF",
       },
       backgroundColor: {
+        gray9: "#1f1f1f",
+        gray8: "#252525",
+        gray6: "#666",
+        gray5: "#999",
         deepPurple3: "#190061",
         deepPurple2: "#240090",
         deepPurple1: "#3500d3",

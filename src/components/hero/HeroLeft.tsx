@@ -9,7 +9,7 @@ const HeroLeft = () => {
         Quality products imported from Japan, Europe and USA for you.
       </p>
       <Link
-        className="bg-deepPurple1 hover:bg-deepPurple2 duration-200 text-primary p-2 rounded w-fit"
+        className="bg-gray9 border-gray6 hover:bg-gray8 hover:border-gray5 px-6 py-4 border-[1px] duration-200 text-primary rounded w-fit"
         to={"/products"}
       >
         <button>Shop Now</button>
