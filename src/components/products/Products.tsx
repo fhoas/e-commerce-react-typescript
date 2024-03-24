@@ -148,29 +148,32 @@ const Products: React.FC<ProductsProps> = ({ product, id }) => {
           </button>
         )}
 
-        <button
-          onClick={addCart}
-          className={`bg-gray10 border-gray6 hover:bg-gray8 hover:border-gray5 py-2 rounded border text-primary bg-primary w-full flex justify-center items-center gap-2 ${
-            addedToCart
-              ? "bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600"
-              : ""
-          }`}
-        >
-          <div>
-            {waiting === true ? (
-              <Skeleton
-                width={handleSkeletonWidth2()}
-                height={"20px"}
-                className="pt-[3px]"
-              />
-            ) : (
-              <div className="flex justify-center items-center gap-2">
-                <FaCartShopping />
-                {addedToCart ? "Added to Cart" : "Add to Cart"}
-              </div>
-            )}
-          </div>
-        </button>
+        {waiting === true ? (
+          <button
+            onClick={addCart}
+            className={`bg-gray10 border-gray6 py-2 rounded border text-primary bg-primary w-full flex justify-center items-center gap-2`}
+          >
+            <Skeleton
+              width={handleSkeletonWidth2()}
+              height={"20px"}
+              className="pt-[3px]"
+            />
+          </button>
+        ) : (
+          <button
+            onClick={addCart}
+            className={`bg-gray10 border-gray6 hover:bg-gray8 hover:border-gray5 py-2 rounded border text-primary bg-primary w-full flex justify-center items-center gap-2 ${
+              addedToCart
+                ? "bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600"
+                : ""
+            }`}
+          >
+            <div className="flex justify-center items-center gap-2">
+              <FaCartShopping />
+              {addedToCart ? "Added to Cart" : "Add to Cart"}
+            </div>
+          </button>
+        )}
       </div>
     </div>
   );

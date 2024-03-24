@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { MainContext } from "../../context/MainContext";
 import { Link } from "react-router-dom";
-import { ProductsContext } from "../../context/ProductsContext";
 
 const SideMenu = () => {
   const { sideStatus, setSideStatus } = useContext(MainContext) || {};
