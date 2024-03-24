@@ -10,7 +10,7 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ to, currentPath, children }) => {
   const isActive = currentPath === to;
 
-  const linkStyles = `text-large  ${isActive ? "font-bold" : ""}`;
+  const linkStyles = `text-large  ${isActive ? "text-white" : "text-gray5"}`;
 
   return (
     <Link to={to} className={linkStyles}>

@@ -1,21 +1,24 @@
 import { useContext, useState } from "react";
 import { MainContext } from "../../context/MainContext";
 import { Link } from "react-router-dom";
-import { FaChevronDown } from "react-icons/fa";
 import { ProductsContext } from "../../context/ProductsContext";
 
 const SideMenu = () => {
-  const { sideStatus } = useContext(MainContext) || {};
+  const { sideStatus, setSideStatus } = useContext(MainContext) || {};
   const [dropDownStatus, setDropDownStatus] = useState<boolean>(false);
-  const { setActiveCategory } =
-    useContext(ProductsContext) || {};
+
+  // const { setActiveCategory } = useContext(ProductsContext) || {};
 
   const handleDropDown = () => {
     setDropDownStatus(!dropDownStatus);
   };
 
-  const handleActiveCategory = (category: string) => {
-    if (setActiveCategory) setActiveCategory(category);
+  // const handleActiveCategory = (category: string) => {
+  //   if (setActiveCategory) setActiveCategory(category);
+  // };
+
+  const closeSideMenu = () => {
+    if (setSideStatus) setSideStatus(!sideStatus);
   };
 
   return (
@@ -25,67 +28,28 @@ const SideMenu = () => {
           <Link
             className="sidebar-link duration-500 hover:tracking-widest"
             to={"/"}
+            onClick={closeSideMenu}
           >
             Home
           </Link>
           <Link
             className="sidebar-link duration-500 hover:tracking-widest"
             to={"/products"}
+            onClick={closeSideMenu}
           >
             Products
           </Link>
           <Link
             className="sidebar-link duration-500 hover:tracking-widest"
             to={"/cart"}
+            onClick={closeSideMenu}
           >
             Cart
           </Link>
           <div
             onClick={handleDropDown}
             className="flex flex-col justify-center gap-2 sidebar-link"
-          >
-            <span className="flex items-center gap-2 hover:tracking-widest  duration-500">
-              Categories
-              <FaChevronDown />
-            </span>
-
-            <div
-              className={`flex flex-col ${
-                dropDownStatus === true ? "flex" : "hidden"
-              }`}
-            >
-              <span
-                onClick={() => handleActiveCategory("all")}
-                className="hover:tracking-widest duration-500"
-              >
-                All
-              </span>
-              <span
-                onClick={() => handleActiveCategory("men's clothing")}
-                className="hover:tracking-widest duration-500"
-              >
-                For Men
-              </span>
-              <span
-                onClick={() => handleActiveCategory("jewelery")}
-                className="hover:tracking-widest duration-500"
-              >
-                Jewelery
-              </span>
-              <span
-                onClick={() => handleActiveCategory("electronics")}
-                className="hover:tracking-widest duration-500"
-              >
-                Electronics
-              </span>
-              <span
-                onClick={() => handleActiveCategory("women's clothing")}
-                className="hover:tracking-widest duration-500"
-              >
-                For Women
-              </span>
-            </div>
-          </div>
+          ></div>
         </aside>
       ) : (
         ""

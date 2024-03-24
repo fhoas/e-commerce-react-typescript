@@ -12,9 +12,11 @@ const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer className="flex justify-between px-8 py-4 bg-primary text-deepWhite text-center bottom-0">
+    <footer className="flex justify-between p-8 bg-primary text-gray5 text-center bottom-0 md:px-16 md:py-4 ">
       <div>All rights reserved © 2024</div>
-      <div>{kanyeQuote !== null ? <p>{kanyeQuote}</p> : <p>Loading...</p>}</div>
+      <div className="hidden sm:flex">
+        {kanyeQuote !== null ? <p>{kanyeQuote}</p> : <p>Loading...</p>}
+      </div>
     </footer>
   );
 };

@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex w-full justify-between bg-primary text-primary items-center p-8 md:px-16 md:py-4 font-primary">
+    <div className="flex w-full justify-between bg-primary text-primary items-center py-4 px-8 md:px-16 md:py-4 font-primary">
       <div className="text-heading flex gap-4">
         <Link to={"/"}>
           <img
@@ -29,16 +29,16 @@ const Navbar = () => {
         </Link>
         <NavLinks />
       </div>
-      <div>
-        <Link to={"/cart"} className="relative hidden lg:flex md:flex sm:flex">
+      <div className="flex justify-center items-center gap-6">
+        <Link to={"/cart"} className="relative sm:flex">
           <FaCartShopping size={24} />
-          <span className="absolute top-[-20px] right-[-15px] bg-gray6 text-white rounded-full h-[20px] w-[20px] flex justify-center items-center">
-            {counter}
-          </span>
+          <div className="absolute top-[-15px] right-[-15px] border bg-gray9 border-gray6 hover:bg-gray8 hover:border-gray5 text-white rounded-full h-[25px] w-[25px] flex justify-center items-center overflow-hidden">
+            <span className="flex justify-center items-center mt-[2px]">{counter}</span>
+          </div>
         </Link>
-      </div>
-      <div className="flex lg:hidden md:hidden sm:hidden" onClick={openMenu}>
+      <div className="flex sm:hidden" onClick={openMenu}>
         <RxHamburgerMenu size={32} />
+      </div>
       </div>
     </div>
   );

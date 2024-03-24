@@ -1,4 +1,3 @@
-// ProductsContext.tsx
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 import axios from "axios";
 
@@ -10,6 +9,8 @@ interface ProductsContextTypes {
   activeCategory: string;
   setActiveCategory: React.Dispatch<React.SetStateAction<string>>;
   filteredProducts: any[];
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const ProductsContext = createContext<ProductsContextTypes | undefined>(
@@ -23,10 +24,19 @@ export const ProductsContextProvider: React.FC<{ children: ReactNode }> = ({
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [index, setIndex] = useState<number>(0);
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [loading, setLoading] = useState<boolean>(true); // Yükleme durumu için ekledik
 
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products").then((response) => {
-      setProducts(response.data);
+    axios.get("https://dummyjson.com/products").then((response) => {
+      const productsData = response.data.products.slice(0, 30);
+      const productsWithCustomId = productsData.map(
+        (product: any, index: number) => ({
+          ...product,
+          customId: index + 1,
+        })
+      );
+      setProducts(productsWithCustomId);
+      setLoading(false);
     });
   }, []);
 
@@ -49,6 +59,8 @@ export const ProductsContextProvider: React.FC<{ children: ReactNode }> = ({
     activeCategory,
     setActiveCategory,
     filteredProducts,
+    loading,
+    setLoading
   };
 
   return (

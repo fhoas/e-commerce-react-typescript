@@ -6,21 +6,20 @@ import CartPage from "./pages/CartPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import DetailsPage from "./pages/DetailsPage";
-// import Footer from "./components/footer/Footer";
 import { MainContextProvider } from "./context/MainContext";
 import { ProductsContextProvider } from "./context/ProductsContext";
 import { CartContextProvider } from "./context/CartContext";
 import SideMenu from "./components/sideMenu/SideMenu";
-import ErrorBoundary from "./pages/ErrorBoundary";
 import Footer from "./components/footer/Footer";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 function App() {
   return (
-    <MainContextProvider>
-      <ProductsContextProvider>
-        <CartContextProvider>
-          <Router>
-            <ErrorBoundary>
+    <SkeletonTheme baseColor="#313131" highlightColor="#525252">
+      <MainContextProvider>
+        <ProductsContextProvider>
+          <CartContextProvider>
+            <Router>
               <Navbar />
               <SideMenu />
               <Routes>
@@ -34,11 +33,11 @@ function App() {
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
               <Footer />
-            </ErrorBoundary>
-          </Router>
-        </CartContextProvider>
-      </ProductsContextProvider>
-    </MainContextProvider>
+            </Router>
+          </CartContextProvider>
+        </ProductsContextProvider>
+      </MainContextProvider>
+    </SkeletonTheme>
   );
 }
 

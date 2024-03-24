@@ -1,57 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { ProductsContext } from "../context/ProductsContext";
+import { FaMinus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
 const CartPage: React.FC = () => {
   const { products } = useContext(ProductsContext) || {};
   const { cartItems, setCartItems } = useContext(CartContext) || {};
   const [cartProducts, setCartProducts] = useState<any[]>([]);
-  // const [isUnsupportedDimensions, setIsUnsupportedDimensions] =
-  //   useState<boolean>(false);
   const [windowWidth] = useState<number>(window.innerWidth);
 
-  // useEffect(() => {
-  //   function handleResize() {
-  //     setWindowWidth(window.innerWidth);
-  //     setIsUnsupportedDimensions(window.innerWidth < 300);
-  //   }
-
-  //   handleResize();
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, [cartItems]);
-
   useEffect(() => {
-    setCartProducts((prevCartProducts) =>
-      products
-        .filter((product: any) => cartItems?.includes(product.id))
-        .map((product: any) => {
-          const existingProduct = prevCartProducts.find(
-            (prevProduct) => prevProduct.id === product.id
-          );
-          return {
-            ...product,
-            quantity: existingProduct ? existingProduct.quantity : 1,
-          };
-        })
+    if (!cartItems || !products) return;
+
+    const newCartProducts = products.filter((product: any) =>
+      cartItems.includes(product.customId)
     );
+
+    setCartProducts(newCartProducts);
   }, [products, cartItems]);
 
   const calculateTotal = () => {
     return cartProducts.reduce(
       (total: any, product: any) =>
-        total + Math.trunc((product.price / 100) * 70) * product.quantity,
+        total +
+        Math.trunc((product.price / 100) * 70) * (product.quantity || 1),
       0
     );
   };
 
-  const increaseQuantity = (productId: number) => {
+  const increaseQuantity = (customId: number) => {
     const updatedCartProducts = cartProducts.map((product: any) => {
-      if (product.id === productId) {
+      if (product.customId === customId) {
         return { ...product, quantity: (product.quantity || 1) + 1 };
       }
       return product;
@@ -60,10 +40,10 @@ const CartPage: React.FC = () => {
     setCartProducts(updatedCartProducts);
   };
 
-  const decreaseQuantity = (productId: number) => {
+  const decreaseQuantity = (customId: number) => {
     const updatedCartProducts = cartProducts.map((product: any) => {
       if (
-        product.id === productId &&
+        product.customId === customId &&
         product.quantity &&
         product.quantity > 1
       ) {
@@ -75,46 +55,38 @@ const CartPage: React.FC = () => {
     setCartProducts(updatedCartProducts);
   };
 
-  const removeItem = (productId: number) => {
+  const removeItem = (customId: number) => {
     const updatedCartProducts = cartProducts.filter(
-      (product: any) => product.id !== productId
+      (product: any) => product.customId !== customId
     );
     setCartProducts(updatedCartProducts);
 
     if (setCartItems) {
-      setCartItems(updatedCartProducts.map((product) => product.id));
+      setCartItems(updatedCartProducts.map((product) => product.customId));
     }
   };
 
-  // if (isUnsupportedDimensions) {
-  //   return (
-  //     <div className="flex justify-center items-center p-8 text-center">
-  //       <p className="text-red-500 mt-4">These dimensions are not supported.</p>
-  //     </div>
-  //   );
-  // }
-
   return (
-    <div className="p-4 md:px-16 md:py-8 min-h-[calc(100vh-152px)]">
+    <div className="p-4 md:px-16 md:py-8 min-h-[calc(100vh-152px)] ">
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
       {cartProducts.length === 0 ? (
         <p className="text-deepWhite">Your cart is empty.</p>
       ) : (
         <>
-          <ul className="flex flex-col bg-[#202020] bg-primary p-4 md:p-8 rounded gap-2">
+          <ul className="flex flex-col bg-[#202020] bg-primary p-4 md:p-8 rounded gap-2 border-gray5 border">
             {cartProducts.map((product: any, index: number) => (
-              <React.Fragment key={product.id}>
+              <React.Fragment key={product.customId}>
                 <li className="flex items-center justify-between py-2">
-                  <div className="flex items-start space-x-4">
+                  <div className="flex items-start flex-col sm:flex-row sm:space-x-4">
                     <img
-                      src={product.image}
+                      src={product.thumbnail}
                       alt={product.title}
-                      className="w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] rounded"
+                      className="w-[75px] h-[75px] sm:w-[100px] sm:h-[100px] rounded"
                     />
-                    <div>
+                    <div className="mt-2">
                       <p
-                        className={`text-[10px] sm:text-small md:text-medium text-primary ${
+                        className={`text-lg text-primary ${
                           windowWidth < 600 ? "max-w-[300px]" : "max-w-[300px]"
                         }`}
                       >
@@ -125,33 +97,31 @@ const CartPage: React.FC = () => {
                             ) + "..."
                           : product.title}
                       </p>
-                      <p className="text-[10px] sm:text-small md:text-medium font-semibold text-primary">
+                      <p className="text-md font-semibold text-primary">
                         ${Math.trunc((product.price / 100) * 70)}
                       </p>
                     </div>
                   </div>
                   <div>
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <div className="flex items-center justify-center space-x-4 sm:space-x-4">
+                      <div className="flex items-center justify-center space-x-4 sm:space-x-4 bg-gray9 border-gray5 text-white border-[1px] px-4 py-2 rounded text-[10px] sm:text-small md:text-medium">
                         <button
-                          onClick={() => decreaseQuantity(product.id)}
-                          className="text-white text-small sm:text-medium"
+                          onClick={() => decreaseQuantity(product.customId)}
                         >
-                          -
+                          <FaMinus size={14} />
                         </button>
-                        <span className="text-primary text-small sm:text-medium">
+                        <span className="text-lg text-center w-[15px]">
                           {product.quantity || 1}
                         </span>
                         <button
-                          onClick={() => increaseQuantity(product.id)}
-                          className="text-white text-small sm:text-medium"
+                          onClick={() => increaseQuantity(product.customId)}
                         >
-                          +
+                          <FaPlus size={14} />
                         </button>
                       </div>
                       <button
-                        onClick={() => removeItem(product.id)}
-                        className="bg-gray9 border-gray5 hover:bg-gray8 hover:border-gray5 text-white border-[1px] p-2 rounded text-[10px] sm:text-small md:text-medium "
+                        onClick={() => removeItem(product.customId)}
+                        className="bg-gray9 border-gray5 hover:bg-gray8 hover:border-gray5 text-white border-[1px] p-2 rounded text-md"
                       >
                         Remove
                       </button>
