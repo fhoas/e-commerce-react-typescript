@@ -3,12 +3,14 @@ import { CartContext } from "../context/CartContext";
 import { ProductsContext } from "../context/ProductsContext";
 import { FaMinus } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const CartPage: React.FC = () => {
   const { products } = useContext(ProductsContext) || {};
   const { cartItems, setCartItems } = useContext(CartContext) || {};
   const [cartProducts, setCartProducts] = useState<any[]>([]);
   const [windowWidth] = useState<number>(window.innerWidth);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!cartItems || !products) return;
@@ -66,6 +68,10 @@ const CartPage: React.FC = () => {
     }
   };
 
+  const handleProductClick = (productId: number) => {
+    navigate(`/products/details/${productId}`);
+  };
+
   return (
     <div className="p-4 md:px-16 md:py-8 min-h-[calc(100vh-152px)] ">
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
@@ -74,19 +80,24 @@ const CartPage: React.FC = () => {
         <p className="text-deepWhite">Your cart is empty.</p>
       ) : (
         <>
-          <ul className="flex flex-col bg-[#202020] bg-primary p-4 md:p-8 rounded gap-2 border-gray5 border">
+          <ul className="flex flex-col bg-[#202020] bg-primary p-4 md:p-8 rounded gap-2 border-gray6 border">
             {cartProducts.map((product: any, index: number) => (
               <React.Fragment key={product.customId}>
                 <li className="flex items-center justify-between py-2">
                   <div className="flex items-start flex-col sm:flex-row sm:space-x-4">
-                    <img
-                      src={product.thumbnail}
-                      alt={product.title}
-                      className="w-[75px] h-[75px] sm:w-[100px] sm:h-[100px] rounded"
-                    />
+                    <div
+                      onClick={() => handleProductClick(product.id)}
+                      className="h-[180px] w-[180px] flex items-center justify-center border-[1px] border-gray6 bg-gray10 rounded-[5px] p-2 cursor-pointer"
+                    >
+                      <img
+                        className="w-fit max-h-[140px] aspect-squar rounded-[5px]"
+                        src={product.thumbnail}
+                        alt={product.title}
+                      />
+                    </div>
                     <div className="mt-2">
                       <p
-                        className={`text-lg text-primary ${
+                        className={`text-2xl text-primary ${
                           windowWidth < 600 ? "max-w-[300px]" : "max-w-[300px]"
                         }`}
                       >
@@ -97,31 +108,33 @@ const CartPage: React.FC = () => {
                             ) + "..."
                           : product.title}
                       </p>
-                      <p className="text-md font-semibold text-primary">
+                      <p className="text-md text-primary">
                         ${Math.trunc((product.price / 100) * 70)}
                       </p>
                     </div>
                   </div>
                   <div>
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <div className="flex items-center justify-center space-x-4 sm:space-x-4 bg-gray9 border-gray5 text-white border-[1px] px-4 py-2 rounded text-[10px] sm:text-small md:text-medium">
+                      <div className="flex items-center justify-center space-x-4 sm:space-x-4 bg-gray9 border-gray6 text-white border-[1px] px-4 py-2 rounded text-[10px] sm:text-small md:text-medium">
                         <button
+                          className="text-gray5"
                           onClick={() => decreaseQuantity(product.customId)}
                         >
-                          <FaMinus size={14} />
+                          <FaMinus size={12} />
                         </button>
                         <span className="text-lg text-center w-[15px]">
                           {product.quantity || 1}
                         </span>
                         <button
+                          className="text-gray5"
                           onClick={() => increaseQuantity(product.customId)}
                         >
-                          <FaPlus size={14} />
+                          <FaPlus size={12} />
                         </button>
                       </div>
                       <button
                         onClick={() => removeItem(product.customId)}
-                        className="bg-gray9 border-gray5 hover:bg-gray8 hover:border-gray5 text-white border-[1px] p-2 rounded text-md"
+                        className="bg-gray9 border-gray6 hover:bg-gray8 hover:border-gray5 text-white border-[1px] px-4 py-2 rounded text-md"
                       >
                         Remove
                       </button>
@@ -129,7 +142,7 @@ const CartPage: React.FC = () => {
                   </div>
                 </li>
                 {index < cartProducts.length - 1 && (
-                  <div className="w-full h-px bg-gray-300 my-2" />
+                  <div className="w-full h-px bg-gray6 my-2" />
                 )}
               </React.Fragment>
             ))}

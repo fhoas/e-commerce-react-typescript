@@ -14,7 +14,8 @@ const Footer: React.FC = () => {
   return (
     <footer className="flex justify-between p-8 bg-primary text-gray5 text-center bottom-0 md:px-16 md:py-4 ">
       <div>All rights reserved © 2024</div>
-      <div className="hidden sm:flex">
+      <div className="hidden sm:flex gap-2">
+        Kanye Says:
         {kanyeQuote !== null ? <p>{kanyeQuote}</p> : <p>Loading...</p>}
       </div>
     </footer>

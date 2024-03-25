@@ -6,15 +6,9 @@ const SideMenu = () => {
   const { sideStatus, setSideStatus } = useContext(MainContext) || {};
   const [dropDownStatus, setDropDownStatus] = useState<boolean>(false);
 
-  // const { setActiveCategory } = useContext(ProductsContext) || {};
-
   const handleDropDown = () => {
     setDropDownStatus(!dropDownStatus);
   };
-
-  // const handleActiveCategory = (category: string) => {
-  //   if (setActiveCategory) setActiveCategory(category);
-  // };
 
   const closeSideMenu = () => {
     if (setSideStatus) setSideStatus(!sideStatus);

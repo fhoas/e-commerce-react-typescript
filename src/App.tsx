@@ -15,7 +15,7 @@ import { SkeletonTheme } from "react-loading-skeleton";
 
 function App() {
   return (
-    <SkeletonTheme baseColor="#313131" highlightColor="#525252">
+    <SkeletonTheme baseColor="#252525" highlightColor="#666">
       <MainContextProvider>
         <ProductsContextProvider>
           <CartContextProvider>
@@ -27,7 +27,7 @@ function App() {
                 <Route path="/products" element={<ProductsPage />} />
                 <Route
                   path="products/details/:id"
-                  element={<DetailsPage product={undefined} id={0} />}
+                  element={<DetailsPage />}
                 />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="*" element={<ErrorPage />} />
