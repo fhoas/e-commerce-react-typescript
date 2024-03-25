@@ -1,5 +1,3 @@
-// import React from "react";
-
 const ErrorPage = () => {
   return (
     <div className="error__wrapper text-white flex items-center justify-center flex-col p-8 min-h-[calc(100vh-136px)]">
