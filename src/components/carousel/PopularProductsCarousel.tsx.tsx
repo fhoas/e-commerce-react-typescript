@@ -59,7 +59,7 @@ export const Carousel = () => {
     <div className="hidden sm:block w-full cursor-grab overflow-hidden pb-6 pt-1 relative bg-gray9 mt-10 rounded-[5px]">
       <h2 className="flex gap-2 items-center text-white text-lg sm:text-2xl font-bold mx-4 mt-4 sm:mx-6 sm:mt-6">
         Popular Products
-        <img className="h-[35px] w-[35px] mb-2" src="../../../public/assets/fire.svg" alt="" />
+        <img className="h-[35px] w-[35px] mb-2" src="../../assets/fire.svg" alt="" />
       </h2>
 
       <animated.ul

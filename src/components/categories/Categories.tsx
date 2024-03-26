@@ -42,7 +42,7 @@ const Categories = () => {
             Categories
           </span>
           {showDropdown && (
-            <div className="absolute z-10 top-full left-0 bg-gray9 text-white py-2 w-full">
+            <div className="absolute z-11 top-full left-0 bg-gray9 text-white py-2 w-full">
               <span
                 onClick={() => handleActiveCategory("all")}
                 className="block px-6 py-2 hover:bg-gray8 cursor-pointer"

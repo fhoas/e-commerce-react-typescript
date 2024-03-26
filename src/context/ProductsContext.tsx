@@ -24,7 +24,7 @@ export const ProductsContextProvider: React.FC<{ children: ReactNode }> = ({
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [index, setIndex] = useState<number>(0);
   const [activeCategory, setActiveCategory] = useState<string>("all");
-  const [loading, setLoading] = useState<boolean>(true); // Yükleme durumu için ekledik
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     axios.get("https://dummyjson.com/products").then((response) => {
@@ -60,7 +60,7 @@ export const ProductsContextProvider: React.FC<{ children: ReactNode }> = ({
     setActiveCategory,
     filteredProducts,
     loading,
-    setLoading
+    setLoading,
   };
 
   return (
