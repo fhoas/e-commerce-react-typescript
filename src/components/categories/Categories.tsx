@@ -42,7 +42,7 @@ const Categories = () => {
             Categories
           </span>
           {showDropdown && (
-            <div className="absolute z-11 top-full left-0 bg-gray9 text-white py-2 w-full">
+            <div className="absolute z-20 top-full left-0 bg-gray9 text-white py-2 w-full">
               <span
                 onClick={() => handleActiveCategory("all")}
                 className="block px-6 py-2 hover:bg-gray8 cursor-pointer"
@@ -50,28 +50,22 @@ const Categories = () => {
                 All
               </span>
               <span
-                onClick={() => handleActiveCategory("smartphones")}
+                onClick={() => handleActiveCategory("beauty")}
                 className="block px-6 py-2 hover:bg-gray8 cursor-pointer"
               >
-                Smartphones
+                Beauty
               </span>
               <span
-                onClick={() => handleActiveCategory("laptops")}
+                onClick={() => handleActiveCategory("furniture")}
                 className="block px-6 py-2 hover:bg-gray8 cursor-pointer"
               >
-                Laptops
+                Furniture
               </span>
               <span
                 onClick={() => handleActiveCategory("fragrances")}
                 className="block px-6 py-2 hover:bg-gray8 cursor-pointer"
               >
                 Fragrances
-              </span>
-              <span
-                onClick={() => handleActiveCategory("skincare")}
-                className="block px-6 py-2 hover:bg-gray8 cursor-pointer"
-              >
-                Skincare
               </span>
               <span
                 onClick={() => handleActiveCategory("groceries")}
@@ -83,7 +77,7 @@ const Categories = () => {
                 onClick={() => handleActiveCategory("home-decoration")}
                 className="block px-6 py-2 hover:bg-gray8 cursor-pointer"
               >
-                Home Decoration
+                Decoration
               </span>
             </div>
           )}
@@ -99,20 +93,20 @@ const Categories = () => {
             All
           </span>
           <span
-            onClick={() => handleActiveCategory("smartphones")}
+            onClick={() => handleActiveCategory("beauty")}
             className={`flex-1 md:p-2 bg-gray9 hover:bg-gray8 hover:border-gray5 px-6 py-4 rounded-lg  border-[1px] flex justify-center items-center ${
-              activeCategory === "smartphones" ? "border-white" : "border-gray6"
+              activeCategory === "beauty" ? "border-white" : "border-gray6"
             }`}
           >
-            Smartphones
+            Beauty
           </span>
           <span
-            onClick={() => handleActiveCategory("laptops")}
+            onClick={() => handleActiveCategory("furniture")}
             className={`flex-1 md:p-2 bg-gray9 hover:bg-gray8 hover:border-gray5 px-6 py-4 rounded-lg  border-[1px] flex justify-center items-center ${
-              activeCategory === "laptops" ? "border-gray5" : "border-gray6"
+              activeCategory === "furniture" ? "border-gray5" : "border-gray6"
             }`}
           >
-            Laptops
+            Furniture
           </span>
           <span
             onClick={() => handleActiveCategory("fragrances")}
@@ -121,14 +115,6 @@ const Categories = () => {
             }`}
           >
             Fragrances
-          </span>
-          <span
-            onClick={() => handleActiveCategory("skincare")}
-            className={`flex-1 md:p-2 bg-gray9 hover:bg-gray8 hover:border-gray5 px-6 py-4 rounded-lg  border-[1px] flex justify-center items-center ${
-              activeCategory === "skincare" ? "border-gray5" : "border-gray6"
-            }`}
-          >
-            Skincare
           </span>
           <span
             onClick={() => handleActiveCategory("groceries")}

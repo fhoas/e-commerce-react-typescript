@@ -5,24 +5,24 @@ import { useSpring, animated } from "react-spring";
 const carouselProducts = [
   {
     id: 7,
-    name: "Samsung Galaxy Book",
+    name: "Chanel Coco Noir Eau De",
     price: "$1049 USD",
     imageUrl:
-      "https://image-us.samsung.com/SamsungUS/home/computing/windows-laptop/glxy-book-pro-360/mars/new/jpg/Mars15_WiFi_Navy_004_R-Perspective_US.jpg?$product-details-jpg$",
+      "https://cdn.dummyjson.com/products/images/fragrances/Chanel%20Coco%20Noir%20Eau%20De/1.png",
   },
   {
     id: 8,
-    name: "Microsoft Surface 4",
+    name: "Dior J'adore",
     price: "$1049 USD",
     imageUrl:
-      "https://assets.hardwarezone.com/img/2021/06/ms-surfacelaptop4-intro1.jpg",
+      "https://cdn.dummyjson.com/products/images/fragrances/Dior%20J'adore/1.png",
   },
   {
     id: 5,
-    name: "Huawei P30",
+    name: "Red Nail Polish",
     price: "$349 USD",
     imageUrl:
-      "https://www.androidauthority.com/wp-content/uploads/2019/03/Huawei-P30-Pro-standing-53-of-60.jpg",
+      "https://cdn.dummyjson.com/products/images/beauty/Red%20Nail%20Polish/1.png",
   },
 ];
 
@@ -59,7 +59,11 @@ export const Carousel = () => {
     <div className="hidden sm:block w-full cursor-grab overflow-hidden pb-6 pt-1 relative bg-gray9 mt-10 rounded-[5px]">
       <h2 className="flex gap-2 items-center text-white text-lg sm:text-2xl font-bold mx-4 mt-4 sm:mx-6 sm:mt-6">
         Popular Products
-        <img className="h-[35px] w-[35px] mb-2" src="../../assets/fire.svg" alt="" />
+        <img
+          className="h-[35px] w-[35px] mb-2"
+          src="../../assets/fire.svg"
+          alt=""
+        />
       </h2>
 
       <animated.ul
@@ -80,11 +84,10 @@ export const Carousel = () => {
               <img
                 alt={product.name}
                 src={product.imageUrl}
-                className="w-[95%] h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 rounded-[5px]"
+                className="w-[95%] h-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-105 rounded-[5px]"
               />
               <div className="absolute bottom-[-6px] left-0 right-0 p-4 bg-gray9/70 text-white opacity-1 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
                 <p className="text-sm">{product.name}</p>
-                <p className="text-lg font-semibold">{product.price}</p>
               </div>
             </div>
           </li>
